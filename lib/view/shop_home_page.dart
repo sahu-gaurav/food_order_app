@@ -135,6 +135,143 @@ class _ShopHomePageState extends State<ShopHomePage> {
                             child: ExpansionTile(
                               trailing: Wrap(
                                 children: [
+                                  const Text("3"),
+                                  const SizedBox(
+                                    width: 5,
+                                  ),
+                                  controller.showDropDown[6]
+                                      ? const Icon(Icons.keyboard_arrow_down)
+                                      : const Icon(Icons.arrow_forward_ios),
+                                ],
+                              ),
+                              onExpansionChanged: (val) {
+                                // log("$index,$val");
+                                //  items.cat1[index].quantity = items.cat1[index].quantity + 1;
+                                controller.changeDropDownStatus(6, val);
+                              },
+                              title: const Text("Popular Items"),
+                              children: <Widget>[
+                                ListTile(
+                                  title: Text(
+                                    controller.shopItems.cat1[0].name,
+                                    style: TextStyle(
+                                      color:
+                                          controller.shopItems.cat1[0].instock
+                                              ? Colors.white
+                                              : Colors.grey,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    "\$ " +
+                                        controller.shopItems.cat1[0].price
+                                            .toString(),
+                                    style: TextStyle(
+                                      color:
+                                          controller.shopItems.cat1[0].instock
+                                              ? Colors.white
+                                              : Colors.grey,
+                                    ),
+                                  ),
+                                  trailing: AddItem(
+                                    category: "1",
+                                    name: controller.shopItems.cat1[0].name,
+                                    price: controller.shopItems.cat1[0].price,
+                                    instock:
+                                        controller.shopItems.cat1[0].instock,
+                                  ),
+                                ),
+                                ListTile(
+                                  title: SizedBox(
+                                    child: Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text(
+                                          controller.shopItems.cat1[3].name,
+                                          style: TextStyle(
+                                            color: controller
+                                                    .shopItems.cat1[3].instock
+                                                ? Colors.white
+                                                : Colors.grey,
+                                          ),
+                                        ),
+                                        Card(
+                                          color: Colors.red,
+                                          child: Padding(
+                                            padding: const EdgeInsets.all(8.0),
+                                            child: Text(
+                                              "BestSeller",
+                                              style: TextStyle(
+                                                color: controller.shopItems
+                                                        .cat1[3].instock
+                                                    ? Colors.white
+                                                    : Colors.grey,
+                                              ),
+                                            ),
+                                          ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    "\$ " +
+                                        controller.shopItems.cat1[3].price
+                                            .toString(),
+                                    style: TextStyle(
+                                      color:
+                                          controller.shopItems.cat1[3].instock
+                                              ? Colors.white
+                                              : Colors.grey,
+                                    ),
+                                  ),
+                                  trailing: AddItem(
+                                    category: "1",
+                                    name: controller.shopItems.cat1[3].name,
+                                    price: controller.shopItems.cat1[3].price,
+                                    instock:
+                                        controller.shopItems.cat1[3].instock,
+                                  ),
+                                ),
+                                ListTile(
+                                  title: Text(
+                                    controller.shopItems.cat6[0].name,
+                                    style: TextStyle(
+                                      color:
+                                          controller.shopItems.cat6[0].instock
+                                              ? Colors.white
+                                              : Colors.grey,
+                                    ),
+                                  ),
+                                  subtitle: Text(
+                                    "\$ " +
+                                        controller.shopItems.cat6[0].price
+                                            .toString(),
+                                    style: TextStyle(
+                                      color:
+                                          controller.shopItems.cat6[0].instock
+                                              ? Colors.white
+                                              : Colors.grey,
+                                    ),
+                                  ),
+                                  trailing: AddItem(
+                                    category: "6",
+                                    name: controller.shopItems.cat6[0].name,
+                                    price: controller.shopItems.cat6[0].price,
+                                    instock:
+                                        controller.shopItems.cat6[0].instock,
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Card(
+                          child: Padding(
+                            padding: const EdgeInsets.only(
+                                top: 36.0, left: 6.0, right: 6.0, bottom: 6.0),
+                            child: ExpansionTile(
+                              trailing: Wrap(
+                                children: [
                                   Text(controller.shopItems.cat1.length
                                       .toString()),
                                   const SizedBox(
@@ -190,7 +327,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat1[idx].price,
                                             instock: controller
                                                 .shopItems.cat1[idx].instock,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),
@@ -264,7 +400,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat2[idx].instock,
                                             // quantity: controller
                                             //     .shopItems.cat2[idx].quantity,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),
@@ -337,7 +472,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat3[idx].instock,
                                             // quantity: controller
                                             //     .shopItems.cat3[idx].quantity,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),
@@ -410,7 +544,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat4[idx].instock,
                                             // quantity: controller
                                             //     .shopItems.cat4[idx].quantity,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),
@@ -483,7 +616,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat5[idx].instock,
                                             // quantity: controller
                                             //     .shopItems.cat5[idx].quantity,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),
@@ -556,7 +688,6 @@ class _ShopHomePageState extends State<ShopHomePage> {
                                                 .shopItems.cat6[idx].instock,
                                             // quantity: controller
                                             //     .shopItems.cat6[idx].quantity,
-                                            widgetIndex: idx,
                                           ),
                                         );
                                       }),

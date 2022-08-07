@@ -9,7 +9,7 @@ class ShopItemsCntroller extends GetxController {
   late Rx<ShopItems> _shopItems;
   // late Rx<ShopItems> shopItems;
   RxBool enabledShimmer = true.obs;
-  List<bool> showDropDown = [false, false, false, false, false, false];
+  List<bool> showDropDown = [false, false, false, false, false, false, false];
   ShopItems get shopItems => _shopItems.value;
 
   @override

@@ -12,13 +12,11 @@ class AddItem extends StatelessWidget {
   int price;
   bool instock;
 
-  int widgetIndex;
   AddItem({
     required this.category,
     required this.name,
     required this.price,
     required this.instock,
-    required this.widgetIndex,
   });
 
   @override
