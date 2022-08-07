@@ -29,9 +29,16 @@ class AddItem extends StatelessWidget {
           ? IconButton(
               icon: Icon(
                 Icons.add_shopping_cart,
-                color: amber,
+                color: !instock ? Colors.grey : amber,
               ),
               onPressed: () {
+                if (!instock) {
+                  Get.snackbar(
+                    "Item Unavailable",
+                    "This Item is not in stock!!",
+                  );
+                  return;
+                }
                 controller.addItem(
                     productId: category + "@" + name,
                     title: name,
